@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +22,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
@@ -34,7 +35,6 @@
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -55,19 +55,16 @@
       &nbsp;
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <img src="<?= $base_url ?>/asset/dist/img/user2-160x160.jpg" width="30px" class="img-circle elevation-" alt="User Image">
+          <img src="<?= $base_url ?>asset/dist/img/user2-160x160.jpg" width="30px" class="img-circle elevation-" alt="User Image">
         </a>
          <div style="position:center;" class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-            <!-- <div class="dropdown-divider"></div> -->
             <a href="#" class="dropdown-item">
               <i class="fas fa-user">&nbsp;&nbsp;&nbsp;Profil</i>
             </a>
-            <!-- <div class="dropdown-divider"></div> -->
-            <a href="#" class="dropdown-item">
+            <a href="logout.php" class="dropdown-item">
               <i class="fas fa-sign-out-alt">&nbsp;&nbsp;&nbsp;Log out</i>
             </a>
          </div>
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
