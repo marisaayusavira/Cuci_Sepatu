@@ -1,5 +1,13 @@
+<?php
+	session_start();
+	if(!empty($_SESSION['admin']['id_admin']==NULL)){
+	  echo"<script> alert('Silahkan Login Terlebih Dahulu..!!');
+	        window.location='index.php';
+	       </script>";
+	}else{
+?>
 <!-- Koneksi -->
- <?php include"../koneksi.php" ?>
+<?php include"../koneksi.php" ?>
 <!-- tutup koneksi -->
 <!-- header -->
 <?php include"template/header.php" ?>
@@ -19,4 +27,5 @@ if(!empty($_GET["page"])){
 <!-- tutup content -->
 <!-- footer -->
 <?php include"template/footer.php" ?>
-<!-- tutup footer
+<!-- tutup footer -->
+<?php } ?>
