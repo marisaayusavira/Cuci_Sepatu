@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?= $base_url ?>asset/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -60,7 +60,7 @@
          <div style="position:center;" class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
             <!-- <div class="dropdown-divider"></div> -->
             <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope">&nbsp;&nbsp;&nbsp;Profil</i>
+              <i class="fas fa-user">&nbsp;&nbsp;&nbsp;Profil</i>
             </a>
             <!-- <div class="dropdown-divider"></div> -->
             <a href="#" class="dropdown-item">
