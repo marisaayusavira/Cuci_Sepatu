@@ -22,52 +22,41 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Data Master
-                <i class="fas fa-angle-left right"></i>
-              </p>
+          <li class="nav-item">
+            <a href="?page=view/data_karyawan" class="nav-link">
+              <i style="color:grey;" class="fas fa-users nav-icon"></i>
+              <p>Data Karyawan</p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
-              </li>
-            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="?page=layanan/layanan" class="nav-link">
+              <i style="color:green;" class="fa fa-leaf nav-icon"></i>
+              <p>Data Layanan</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=pelanggan/pelanggan" class="nav-link">
+              <i class="fa fa-user nav-icon"></i>
+              <p>Data Pelanggan</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?page=jenis_sepatu/jenis_sepatu" class="nav-link">
+              <i style="color:navy;" class="fas fa-tools nav-icon"></i>
+              <p>Jenis Sepatu</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="far fa-file nav-icon"></i>
+              <p>Order</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i style="color:aqua;" class="fa fa-database nav-icon"></i>
+              <p>Product</p>
+            </a>
           </li>
         </ul>
       </nav>
