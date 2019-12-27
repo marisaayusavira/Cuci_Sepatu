@@ -24,6 +24,14 @@ $a = $data->fetch_assoc(); ?>
 					<label>Telpon</label>
 					<input type="number" name="telpon" class="form-control" value="<?= $a['telp'] ?>">
 				</div>
+				<div class="form-group">
+					<label>Username</label>
+					<input type="text" name="username" class="form-control" value="<?= $a['username'] ?>">
+				</div>
+				<div class="form-group">
+					<label>Password</label>
+					<input type="password" name="password" class="form-control" value="">
+				</div>
 				<div align="right">
 					<input type="submit" name="karyawan" class="btn btn-primary" value="Simpan">
 				</div>	

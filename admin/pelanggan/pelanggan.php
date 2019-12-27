@@ -64,8 +64,12 @@
             		<td><?= $data['telp'] ?></td>
             		<td><?= $data['email'] ?></td>
             		<td>
-            			<a href="?page=view/hapus_karyawan&id=<?= $data['id_pelanggan'] ?>" class="btn btn-danger">Hapus</a>
-            			<!-- <a href="?page=view/edit_karyawan&id=<?= $data['id_pelanggan'] ?>" class="btn btn-warning">Edit</a> -->
+            			<a href="?page=pelanggan/hapus_pelanggan&id=<?= $data['id_pelanggan'] ?>" class="btn btn-danger">Hapus</a>
+            			<?php if($data['aktif']== 0){ ?>
+            			<a href="?page=pelanggan/verifikasi&id=<?= $data['id_pelanggan'] ?>" class="btn btn-primary">Verifikasi</a>
+            			<?php }else{
+
+            			} ?>
             		</td>
             	</tr>
             <?php } ?>

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!empty($_SESSION['admin']['id_admin']==NULL)){
+	if(!empty($_SESSION['id']==NULL)){
 	  echo"<script> alert('Silahkan Login Terlebih Dahulu..!!');
 	        window.location='index.php';
 	       </script>";

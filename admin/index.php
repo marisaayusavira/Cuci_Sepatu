@@ -29,6 +29,13 @@
         <input type="password" name="password" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div class="form-group">
+        <select class="form-control" name="level">
+          <option value="">-PILIH-</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+        </select>
+      </div>
       <div class="row">
         <div class="col-xs-6">
           <button type="submit" name="login" class="btn btn-primary btn-block btn-flat">Masuk</button>
