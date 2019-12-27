@@ -28,6 +28,14 @@
 	      		<label>Telpon</label>
 	      		<input type="number" name="telpon" class="form-control" required>
 	      	</div>
+	      	<div class="form-group">
+	      		<label>Username</label>
+	      		<input type="text" name="username" class="form-control" required>
+	      	</div>
+	      	<div class="form-group">
+	      		<label>Password</label>
+	      		<input type="password" name="password" class="form-control" required>
+	      	</div>
 	      	<div align="right">
 	      		<input type="submit" name="karyawan" class="btn btn-primary" value="Simpan">
 	      	</div>

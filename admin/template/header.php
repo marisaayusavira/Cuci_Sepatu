@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="<?= $base_url ?>asset/plugins/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="<?= $base_url ?>asset/plugins/summernote/summernote-bs4.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="<?= $base_url ?>asset/buttons.bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -25,10 +26,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="halaman.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Dashboard</a>
+        <a href="halaman.php" class="nav-link">Dashboard</a>
       </li>
     </ul>
 
@@ -41,12 +42,10 @@
       &nbsp;
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <img src="<?= $base_url ?>asset/dist/img/user2-160x160.jpg" width="30px" class="img-circle elevation-" alt="User Image">
+          <img src="<?= $base_url ?>asset/user.png" width="30px" class="img-circle elevation-" alt="User Image">
         </a>
          <div style="position:center;" class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-user">&nbsp;&nbsp;&nbsp;Profil</i>
-            </a>
+            
             <a href="logout.php" class="dropdown-item">
               <i class="fas fa-sign-out-alt">&nbsp;&nbsp;&nbsp;Log out</i>
             </a>

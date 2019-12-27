@@ -29,6 +29,10 @@
 	      		<label>Harga</label>
 	      		<input type="number" name="harga" class="form-control" required>
 	      	</div>
+	      	<div class="form-group">
+	      		<label>Foto</label>
+	      		<input type="file" name="foto" class="form-control" required>
+	      	</div>
 	      	<div align="right">
 	      		<input type="submit" name="layanan" class="btn btn-primary" value="Simpan">
 	      	</div>
@@ -53,6 +57,7 @@
 	              <th>Nama Layanan</th>
 	              <th>Jenis sepatu</th>
 	              <th>Harga</th>
+	              <th>Foto</th>
 	              <th>Action</th>
 	            </tr>
             </thead>
@@ -65,6 +70,7 @@
             		<td><?= $data['nama_layanan'] ?></td>
             		<td><?= $data['nama_jenis_sepatu'] ?></td>
             		<td>Rp.<?= number_format($data['harga']) ?></td>
+            		<td><img src="../images/<?= $data['foto'] ?>" width="80px"></td>
             		<td>
             			<a href="?page=layanan/hapus_layanan&id=<?= $data['id_layanan'] ?>" class="btn btn-danger">Hapus</a>
             			<a href="?page=layanan/edit_layanan&id=<?= $data['id_layanan'] ?>" class="btn btn-warning">Edit</a>
