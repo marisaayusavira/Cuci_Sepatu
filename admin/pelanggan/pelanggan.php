@@ -65,11 +65,11 @@
             		<td><?= $data['email'] ?></td>
             		<td>
             			<a href="?page=pelanggan/hapus_pelanggan&id=<?= $data['id_pelanggan'] ?>" class="btn btn-danger">Hapus</a>
-            			<!-- <?php if($data['aktif']== 0){ ?>
+            			<?php if($data['aktif']== 0){ ?>
             			<a href="?page=pelanggan/verifikasi&id=<?= $data['id_pelanggan'] ?>" class="btn btn-primary">Verifikasi</a>
             			<?php }else{
 
-            			} ?> -->
+            			} ?>
             		</td>
             	</tr>
             <?php } ?>

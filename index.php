@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
             <label style="color:red;">Email *</label>
-            <input type="email" name="email" class="form-control" placeholder="Email" required>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
         </div>
         <div class="form-group">
             <label style="color:red;">Telpon *</label>
@@ -68,7 +68,7 @@
             <textarea class="form-control" name="alamat"></textarea>
         </div>
         <div align="right">
-            <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" name="register" id="register" onclick="register()" class="btn btn-primary btn-block">Register</button>
         </div><br>
       </div>
       </form>
@@ -427,8 +427,28 @@
     </footer>
     <script src="<?= $base_url ?>asset/js/jquery.min.js"></script>
     <script src="<?= $base_url ?>asset/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?= $base_url ?>asset/js/owl.carousel.min.js"></script>
     <script src="<?= $base_url ?>asset/js/custom.js"></script>
+    <script src="<?= $base_url ?>asset/js/jquery.min.js"></script>
+    <script>
+        function register(){
+            var from = 'noreply@shoes04.com';
+            var subject = 'Ferivikasi';
+            var message = 'Klik Tombol Dibawah Ini... <br> <a href="http://localhost/CuciSepatu/">Ferivikasi</a>';
+            var key = 'madam_cuy_retno';
+            var email = document.getElementById('email').value;
+            console.log(email)
+            $('#delete').click(function(){
+				$.ajax({
+					type: 'POST',
+                    url	: 'https://dafma.id/mail.php',
+		            data: {'form': from,'to': email, 'subject': subject , 'message':message,'key': key },
+					success:function(){
+						console.log(email);
+					}
+				});
+			});
+        }
+    </script>
 </body>
 
 </html>
