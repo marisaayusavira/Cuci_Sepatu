@@ -28,25 +28,25 @@
               <i style="color:grey;" class="fas fa-users nav-icon"></i>
               <p>Data Karyawan</p>
             </a>
-          </li><!-- 
+          </li> 
           <li class="nav-item">
             <a href="?page=layanan/layanan" class="nav-link">
               <i style="color:green;" class="fa fa-leaf nav-icon"></i>
               <p>Data Layanan</p>
             </a>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a href="?page=pelanggan/pelanggan" class="nav-link">
               <i class="fa fa-user nav-icon"></i>
-              <p>Data User</p>
+              <p>Data Pelanggan</p>
             </a>
-          </li><!-- 
+          </li>
           <li class="nav-item">
             <a href="?page=jenis_sepatu/jenis_sepatu" class="nav-link">
               <i style="color:navy;" class="fas fa-tools nav-icon"></i>
               <p>Jenis Sepatu</p>
             </a>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a href="?page=order/order" class="nav-link">
               <i style="color:aqua;" class="far fa-file nav-icon"></i>

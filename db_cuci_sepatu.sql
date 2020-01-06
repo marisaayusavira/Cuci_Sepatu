@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 21, 2019 at 01:59 PM
+-- Generation Time: Dec 29, 2019 at 07:18 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -72,8 +72,17 @@ CREATE TABLE `karyawan` (
   `nama` varchar(50) NOT NULL,
   `jk` varchar(10) NOT NULL,
   `alamat` varchar(50) NOT NULL,
-  `telp` varchar(14) NOT NULL
+  `telp` varchar(14) NOT NULL,
+  `username` varchar(191) NOT NULL,
+  `password` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `karyawan`
+--
+
+INSERT INTO `karyawan` (`id`, `nama`, `jk`, `alamat`, `telp`, `username`, `password`) VALUES
+(3, 'gema fajar', 'Laki-laki', 'padang', '082122855458', 'gemafajar', '$2y$10$fTxhpR.OauuhDrOuN/zBd.8yXXISc1ktt9P5SFQeaIfVH9DTOvB.u');
 
 -- --------------------------------------------------------
 
@@ -85,15 +94,16 @@ CREATE TABLE `layanan` (
   `id_layanan` int(10) NOT NULL,
   `nama_layanan` varchar(50) DEFAULT NULL,
   `id_jenis_sepatu` int(10) NOT NULL,
-  `harga` double NOT NULL
+  `harga` double NOT NULL,
+  `foto` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `layanan`
 --
 
-INSERT INTO `layanan` (`id_layanan`, `nama_layanan`, `id_jenis_sepatu`, `harga`) VALUES
-(12, 'Coloring + Deep Cleaning', 3, 50000);
+INSERT INTO `layanan` (`id_layanan`, `nama_layanan`, `id_jenis_sepatu`, `harga`, `foto`) VALUES
+(12, 'Coloring + Deep Cleaning', 3, 50000, 'clean.png');
 
 -- --------------------------------------------------------
 
@@ -117,12 +127,25 @@ CREATE TABLE `orders` (
 --
 
 CREATE TABLE `order_detail` (
-  `faktur` varchar(25) NOT NULL,
-  `id_layanan` int(10) DEFAULT NULL,
-  `id_jenis_sepatu` int(10) NOT NULL,
-  `harga` double NOT NULL,
-  `subtotal` double NOT NULL
+  `faktur` varchar(191) NOT NULL,
+  `id_pelanggan` int(11) NOT NULL,
+  `layanan` varchar(191) NOT NULL,
+  `sepatu` varchar(191) NOT NULL,
+  `harga` varchar(191) NOT NULL,
+  `taggal` date NOT NULL,
+  `waktu` time NOT NULL,
+  `jumlah` varchar(11) NOT NULL,
+  `total` varchar(191) NOT NULL,
+  `status` varchar(191) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`faktur`, `id_pelanggan`, `layanan`, `sepatu`, `harga`, `taggal`, `waktu`, `jumlah`, `total`, `status`) VALUES
+('SC20191227045955', 6, 'Standard Clean / Quick Clean', 'Semi Boot', '40000', '2019-12-27', '05:00:01', '2', '80000', 'Pending'),
+('SC20191227051619', 6, 'Standard Clean / Quick Clean', 'Semi Boot', '40000', '2019-12-27', '05:16:35', '3', '120000', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -135,31 +158,19 @@ CREATE TABLE `pelanggan` (
   `nama` varchar(50) DEFAULT NULL,
   `alamat` varchar(50) DEFAULT NULL,
   `telp` varchar(20) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(191) NOT NULL,
+  `username` varchar(191) NOT NULL,
+  `aktif` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pelanggan`
 --
 
-INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `alamat`, `telp`, `email`) VALUES
-(3, 'Savira', 'Padang                          ', '082169141494', 'alkhairulyoga@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
-  `username` varchar(191) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `level` varchar(15) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `telp` varchar(15) NOT NULL,
-  `photo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama`, `alamat`, `telp`, `email`, `password`, `username`, `aktif`) VALUES
+(6, 'gemafajar', 'padang', '12309876', 'gemafajar09@gmail.com', '7bedc9fd30769590c992b8f7f23738f7', 'gemafajar', 1),
+(7, 'sibnagke', 'padang', '0987654321', 'gemafajar09@gmail.com', 'abecde1811866a1881231e7977bf97a0', 'bangkelu', NULL);
 
 --
 -- Indexes for dumped tables
@@ -203,12 +214,6 @@ ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id_pelanggan`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -222,31 +227,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `jenis_sepatu`
 --
 ALTER TABLE `jenis_sepatu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id_layanan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_layanan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelanggan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

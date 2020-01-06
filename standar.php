@@ -66,14 +66,20 @@ if(@$_SESSION['user']['id_pelanggan']== ''){
                 <hr>
             </div>
             <div class="row">
+            <?php 
+                include "koneksi.php";
+                $id = $_GET['id'];
+                $data = $koneksi->query("SELECT * FROM layanan a LEFT JOIN jenis_sepatu b ON b.id=a.id_jenis_sepatu WHERE id_layanan = '$id'");
+                $a = $data->fetch_assoc();
+            ?>
                 <div class="col-md-6">
-                    <img src="images/clean.png" width="100%">
+                    <img src="images/<?= $a['foto'] ?>" width="100%">
                 </div>
                 <div class="col-md-6">
                     <br><br><br>
                     <i>
-                        <p>Price: Rp 40.000,-</p>
-                        <p>Cleaning Part: Upper Sole, Middle Sole </p>
+                        <p>Price: Rp. <?= number_format($a['harga']) ?>,-</p>
+                        <p>Cleaning Part: <?= $a['nama_jenis_sepatu'] ?> </p>
                     </i>
                 </div>
             </div>
@@ -92,23 +98,15 @@ if(@$_SESSION['user']['id_pelanggan']== ''){
                         $faktur = date('Ymdhis');
                     ?>
                 <input type="hidden" name="faktur" value="SC<?= $faktur ?>">
-                <input type="text" class="form-control" readonly name="layanan" value="Standard Clean / Quick Clean">
+                <input type="text" class="form-control" readonly name="layanan" value="<?= $a['nama_layanan'] ?>">
             </div>
             <div class="form-group">
                 <label>Jenis Sepatu</label>
-                <select class="form-control" name="jenis" >
-                    <option value="">-PILIH JENIS SEPATU-</option>
-                    <?php 
-                        $data = $koneksi->query("SELECT * FROM jenis_sepatu");
-                        foreach($data as $a){
-                    ?>
-                    <option value="<?= $a['nama_jenis_sepatu'] ?>"><?= $a['nama_jenis_sepatu'] ?></option>
-                    <?php } ?>
-                </select>
+                <input type="text" name="jenis" readonly value="<?= $a['nama_jenis_sepatu'] ?>" class="form-control">
             </div>
             <div class="form-group">
                 <label>Harga</label>
-                <input type="text" class="form-control" readonly name="harga" value="40000">
+                <input type="text" class="form-control" readonly name="harga" value="<?= number_format($a['harga']) ?>">
             </div>
             <div class="form-group">
                 <label>Jumlah Sepatu</label>
