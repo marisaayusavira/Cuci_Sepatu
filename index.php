@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
             <label style="color:red;">Email *</label>
-            <input type="email" name="email" class="form-control" placeholder="Email" required>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
         </div>
         <div class="form-group">
             <label style="color:red;">Telpon *</label>
@@ -68,7 +68,7 @@
             <textarea class="form-control" name="alamat"></textarea>
         </div>
         <div align="right">
-            <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" name="register" id="register" onclick="register()" class="btn btn-primary btn-block">Register</button>
         </div><br>
       </div>
       </form>
@@ -102,6 +102,36 @@
         </form>
         <br>
         <a href="#register" data-dismiss="modal" data-toggle="modal">Registrasi</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+   <!-- Modal -->
+   <div id="change" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><img src="images/logo2.png" width="80px" alt="logo">Ganti Password</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="ganti.php" method="POST">
+        <div class="form-group">
+            <label style="color:red;">Password Lama *</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label style="color:red;">Password Baru *</label>
+            <input type="password" name="password1" class="form-control" placeholder="Password" required>
+        </div>
+        <div align="right">
+            <button type="submit" class="btn btn-primary btn-block" name="ganti">Change</button>
+        </div>
+        </form>
       </div>
     </div>
 
@@ -141,6 +171,9 @@
                             <li class="navbar-item">
                                 <a href="#layanan" class="nav-link">Layanan</a>
                             </li>
+                            <li class="navbar-item">
+                                <a href="#status" class="nav-link">Status</a>
+                            </li>
                             <?php if(@$_SESSION['user']['id_pelanggan']== ''){ ?>
                             <li class="navbar-item">
                                 <a href="#login" data-toggle="modal" class="nav-link">Login</a>
@@ -148,6 +181,9 @@
                         <?php }else{ ?>
                             <li class="navbar-item">
                                 <a href="logout.php" class="nav-link">Logout</a>
+                            </li>
+                            <li class="navbar-item">
+                                <a href="#change" data-toggle="modal" class="nav-link">Ganti Password</a>
                             </li>
                         <?php } ?>
                         </ul>
@@ -264,53 +300,73 @@
         <br>
         <br>
         <div class="row">
+        <?php $data = $koneksi->query('SELECT * FROM layanan a LEFT JOIN jenis_sepatu b ON b.id=a.id_jenis_sepatu');
+        foreach($data as $a):?>
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header">
-                        Standard Clean / Quick Clean
+                        <?= $a['nama_layanan'] ?>
                     </div>
                     <div class="card-body">
                         <img src="images/clean.png">
-                        <p>Price: Rp 40.000,-</p>
-                        <p>Cleaning Part: Upper Sole, Middle Sole </p>
+                        <p>Price: Rp <?= number_format($a['harga']) ?>,-</p>
+                        <p>Cleaning Part: <?= $a['nama_jenis_sepatu'] ?> </p>
                         <p>
-                            <a href="standar.php" class="btn btn-warning btn-block">Order Now</a>
+                            <a href="standar.php?id=<?= $a['id_layanan'] ?>" class="btn btn-warning btn-block">Order Now</a>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        Deep Clean
-                    </div>
-                    <div class="card-body">
-                        <img src="images/deepclean.png">
-                        <p>Price: Rp 60.000,-</p>
-                        <p>Cleaning Part: Upper Sole, Middle Sole, Out Sole, In Sole, Laces  </p>
-                        <p>
-                            <a href="clean.php" class="btn btn-warning btn-block">Order Now</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        Repaint
-                    </div>
-                    <div class="card-body">
-                        <img src="images/cat.jpg">
-                        <p>Starting Price From: Rp 150.000,- </p>
-                        <p>&nbsp;</p>
-                        <br>
-                        <p>
-                            <a href="paint.php" class="btn btn-warning btn-block">Order Now</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <?php endforeach ?>
         </div>
+        </div>
+    </section>
+    <section class="features-sec" id="status">
+        <div class="container">
+            <div class="card">
+  <div class="card-header">
+    <div align="center"><h3>Status Sepatu</h3></div>
+  </div>
+  <div class="card-body table-responsive">
+    <table id="example1" class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>No Faktur</th>
+                <th>Nama Pelanggan</th>
+                <th>Nama Layanan</th>
+                <th>Jenis sepatu</th>
+                <th>Harga</th>
+                <th>Tanggal Masuk</th>
+                <th>Waktu</th>
+                <th>Jumlah Sepatu</th>
+                <th>Total Bayar</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              include "koneksi.php";
+              @$id = $_SESSION['user']['id_pelanggan'];
+                $data = $koneksi->query("SELECT * FROM order_detail a LEFT JOIN pelanggan b ON b.id_pelanggan=a.id_pelanggan WHERE a.id_pelanggan='$id'");
+                foreach ($data as $a) {
+              ?>
+              <tr>
+                <td><?= $a['faktur'] ?></td>
+                <td><?= $a['nama'] ?></td>
+                <td><?= $a['layanan'] ?></td>
+                <td><?= $a['sepatu'] ?></td>
+                <td>Rp.<?= number_format($a['harga']) ?></td>
+                <td><?= $a['taggal'] ?></td>
+                <td><?= $a['waktu'] ?></td>
+                <td><?= $a['jumlah'] ?></td>
+                <td>Rp.<?= number_format($a['total']) ?></td>
+                <td><?= $a['status'] ?></td>
+            </tr>
+        <?php } ?>
+            </tbody>
+        </table>
+  </div>
+</div>
         </div>
     </section>
 
@@ -354,7 +410,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h5>(C) 2017. All Rights Reserved. BookStore Wordpress Theme</h5>
+                        <h5>(C) <?= date('Y') ?></h5>
                     </div>
                     <div class="col-md-6">
                         <div class="share align-middle">
@@ -371,8 +427,28 @@
     </footer>
     <script src="<?= $base_url ?>asset/js/jquery.min.js"></script>
     <script src="<?= $base_url ?>asset/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?= $base_url ?>asset/js/owl.carousel.min.js"></script>
     <script src="<?= $base_url ?>asset/js/custom.js"></script>
+    <script src="<?= $base_url ?>asset/js/jquery.min.js"></script>
+    <script>
+        function register(){
+            var from = 'noreply@shoes04.com';
+            var subject = 'Ferivikasi';
+            var message = 'Klik Tombol Dibawah Ini... <br> <a href="http://localhost/CuciSepatu/">Ferivikasi</a>';
+            var key = 'madam_cuy_retno';
+            var email = document.getElementById('email').value;
+            console.log(email)
+            $('#delete').click(function(){
+				$.ajax({
+					type: 'POST',
+                    url	: 'https://dafma.id/mail.php',
+		            data: {'form': from,'to': email, 'subject': subject , 'message':message,'key': key },
+					success:function(){
+						console.log(email);
+					}
+				});
+			});
+        }
+    </script>
 </body>
 
 </html>

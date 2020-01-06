@@ -27,7 +27,7 @@ $la = $data->fetch_array(); ?>
 				</div>
 				<div class="form-group">
 					<label>Harga</label>
-					<input type="text" name="harga" class="form-control" value="Rp.<?= number_format($la['harga']) ?>">
+					<input type="text" name="harga" class="form-control" value="<?= $la['harga'] ?>">
 				</div>
 				<div align="right">
 					<input type="submit" name="layanan" class="btn btn-primary" value="Simpan">

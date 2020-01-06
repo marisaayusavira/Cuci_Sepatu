@@ -9,6 +9,7 @@
 	@$terupload = move_uploaded_file($file, $lokasi.$namaFile);
 
 	if(isset($_POST['layanan'])){
+		// echo "INSERT INTO `layanan`(`nama_layanan`, `id_jenis_sepatu`, `harga`,`foto`) VALUES ('$nama','$jenis','$harga','$namaFile')"; exit;
 		$koneksi->query("INSERT INTO `layanan`(`nama_layanan`, `id_jenis_sepatu`, `harga`,`foto`) VALUES ('$nama','$jenis','$harga','$namaFile')");
 
 		echo"<script> alert('Data Berhasil Disimpan');

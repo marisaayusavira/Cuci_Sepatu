@@ -108,6 +108,8 @@ if($_SESSION['level']=='Admin'){
                   <?php }else{ ?>
                     <a href="" class="btn btn-warning">Selesai</a>
                   <?php } ?>
+                  &nbsp;
+                  <a href="nota.php?id=<?= $a['faktur'] ?>" class="btn btn-warning">Cetak Nota</a>
                 </td>
               </tr>
               <?php } ?>

@@ -33,7 +33,7 @@
         <select class="form-control" name="level">
           <option value="">-PILIH-</option>
           <option value="Admin">Admin</option>
-          <option value="User">User</option>
+          <option value="User">Karyawan</option>
         </select>
       </div>
       <div class="row">
